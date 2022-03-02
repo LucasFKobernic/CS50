@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+            function checking_answer(id){
+                if (id=="button1"){
+                    document.getElementById(id).style.backgroundColor='Red';
+                    document.getElementById('button2').style.backgroundColor='#00f7ff';
+                    document.getElementById('button3').style.backgroundColor='#00f7ff';
+                    document.getElementById('button4').style.backgroundColor='#00f7ff';
+                    document.getElementById("divElement").innerHTML="Incorret!";
+                }
+                else if (id=="button2"){
+                    document.getElementById(id).style.backgroundColor='Red';
+                    document.getElementById('button1').style.backgroundColor='#00f7ff';
+                    document.getElementById('button3').style.backgroundColor='#00f7ff';
+                    document.getElementById('button4').style.backgroundColor='#00f7ff';
+                    document.getElementById("divElement").innerHTML="Incorret!";
+                }
+                else if (id=="button4"){
+                    document.getElementById(id).style.backgroundColor='Red';
+                    document.getElementById('button1').style.backgroundColor='#00f7ff';
+                    document.getElementById('button2').style.backgroundColor='#00f7ff';
+                    document.getElementById('button3').style.backgroundColor='#00f7ff';
+                    document.getElementById("divElement").innerHTML="Incorret!";
+                }
+                else{
+                    document.getElementById(id).style.backgroundColor="#1ce837";
+                    document.getElementById('button1').style.backgroundColor='#00f7ff';
+                    document.getElementById('button2').style.backgroundColor='#00f7ff';
+                    document.getElementById('button4').style.backgroundColor='#00f7ff';
+                    document.getElementById("divElement").innerHTML="Correct!";
+                }
+
+            }
+            function listen()
+            {
+                const button_1 = document.querySelector('#button1')
+                const button_2 = document.querySelector('#button2')
+                const button_3 = document.querySelector('#button3')
+                const button_4 = document.querySelector('#button4')
+                button_1.addEventListener('click',function () {checking_answer('button1')})
+                button_2.addEventListener('click',function () {checking_answer('button2')})
+                button_3.addEventListener('click',function () {checking_answer('button3')})
+                button_4.addEventListener('click',function () {checking_answer('button4')})
+            }
+            function greet()
+            {
+                let answer=document.querySelector('#answer').value;
+                let trim_answer=answer.split(' ').join('');
+
+                if (trim_answer.toLowerCase()=="angelamerkel")
+                {
+                    document.getElementById("answer").style.backgroundColor="#1ce837";
+                    document.getElementById("divElement2").innerHTML="Corret!";
+                }
+                else {
+                    document.getElementById("answer").style.backgroundColor="Red";
+                    document.getElementById("divElement2").innerHTML="Incorret!";
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', listen)
+
+            // TODO: Add code to check answers to questions
+
+        </script>
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3> Which is the capital from Brazil?</h3>
+                <div id="divElement">  </div>
+                <button id="button1" class="myButton2">Sao Paulo</button>
+                <button id="button2" class="myButton2">Rio de Janeiro</button>
+                <button id="button3" class="myButton2" >Brasilia</button>
+                <button id="button4" class="myButton2" >Bahia</button>
+
+                <!-- TODO: Add multiple choice question here -->
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>What is the name of germany's chanceler?</h3>
+                <div id="divElement2">  </div>
+                <form onsubmit="greet();return false;">
+                    <input autocomplete="off" autofocus id="answer" placeholder="Answer" type="text">
+                    <button id="buttom5">Submit</button>
+                </form>
+
+
+                <!-- TODO: Add free response question here -->
+
+            </div>
+
+        </div>
+    </body>
+</html>
